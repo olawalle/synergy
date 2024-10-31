@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Introduction
+
+This app is a simple app to similate a dashboard to view a list of transactions along with the ability to filter through. You can access a live demo online at [https://synergy-dun.vercel.app/](https://synergy-dun.vercel.app/).
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Available Scripts
 
 In the project directory, you can run:
