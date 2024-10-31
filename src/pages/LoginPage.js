@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { Form, Input, Select, DatePicker, Button, notification } from "antd";
-import dayjs from "dayjs";
-import useAppState from "../hooks/appState";
+import React from "react";
+import { Form, Input, Button, notification } from "antd";
 import { useNavigate } from "react-router-dom";
+import { APP_TOKEN } from "../constants/constants";
 
 function LoginPage(props) {
   const navigate = useNavigate();
@@ -10,6 +9,10 @@ function LoginPage(props) {
 
   const onFinish = async (values) => {
     try {
+      localStorage.setItem(
+        APP_TOKEN,
+        "iuuYFUYvtycRTCtyYUvuvct6C6TvyuVY555 6v7V7yuyvtrCR"
+      );
       navigate("/dashboard");
     } catch (error) {
       notification.error({

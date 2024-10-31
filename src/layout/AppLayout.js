@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DollarCircleOutlined, HomeOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, Layout, Menu } from "antd";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { LogoutOutlined } from "@ant-design/icons";
+import { APP_TOKEN } from "../constants/constants";
 
 const { Header, Content, Sider } = Layout;
 
@@ -23,7 +24,14 @@ const AppLayout = () => {
   const navigation = useNavigate();
   const route = useLocation();
 
+  useEffect(() => {
+    if (!localStorage.getItem(APP_TOKEN)) {
+      navigation("/");
+    }
+  }, []);
+
   const logoutHandler = () => {
+    localStorage.clear();
     navigation("/");
   };
 

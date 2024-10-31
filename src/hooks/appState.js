@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchTnx } from "../apiServices";
+import { STORAGE_KEY } from "../constants/constants";
 
 const useAppState = () => {
-  const storageKey = "new_form_value";
-  const oldValue = sessionStorage.getItem(storageKey);
+  const oldValue = sessionStorage.getItem(STORAGE_KEY);
   const oldValueData = oldValue ? JSON.parse(oldValue) : [];
   const queryClient = useQueryClient();
   const query = useQuery({ queryKey: ["transactions"], queryFn: fetchTnx });
@@ -12,7 +12,7 @@ const useAppState = () => {
     mutationFn: (data) => {
       // using session storage to hold new data
       sessionStorage.setItem(
-        storageKey,
+        STORAGE_KEY,
         JSON.stringify([
           {
             ...data,
