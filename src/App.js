@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import AppLayout from "./layout/AppLayout";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./index.css";
+import DashboardHome from "./pages/DashboardHome";
+import NewTransactionPage from "./pages/NewTransactionPage";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Empty } from "antd";
+
+const queryClient = new QueryClient();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="h-screen">
+        <Router>
+          <Routes>
+            <Route path="/*" element={<AppLayout />}>
+              <Route path="" element={<DashboardHome />} />
+              <Route path="new-transaction" element={<NewTransactionPage />} />
+            </Route>
+            <Route
+              path="*"
+              element={
+                <AppLayout>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Empty description="You have found the ends of the earth!" />
+                  </div>
+                </AppLayout>
+              }
+            />
+          </Routes>
+        </Router>
+      </div>
+    </QueryClientProvider>
   );
 }
 
