@@ -62,7 +62,7 @@ function DashboardHome(props) {
   }
 
   return (
-    <div className="relative h-full px-4 md:px-[120px]">
+    <div className="relative h-full px-4 md:px-[120px] overflow-y-auto">
       <AppFilter
         searchValue={searchValue}
         setSearchValue={setSearchValue}
