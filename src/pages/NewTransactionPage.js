@@ -19,7 +19,7 @@ function NewTransactionPage(props) {
       notification.success({
         message: "New transaction added!",
       });
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       notification.error({
         message: "An error occured, please try again",
