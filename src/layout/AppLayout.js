@@ -1,17 +1,19 @@
 import React from "react";
 import { DollarCircleOutlined, HomeOutlined } from "@ant-design/icons";
-import { Avatar, Layout, Menu } from "antd";
+import { Avatar, Dropdown, Layout, Menu } from "antd";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { LogoutOutlined } from "@ant-design/icons";
+
 const { Header, Content, Sider } = Layout;
 
 const items = [
   {
-    key: "/",
+    key: "/dashboard",
     icon: React.createElement(HomeOutlined),
     label: `Home`,
   },
   {
-    key: "/new-transaction",
+    key: "/dashboard/new-transaction",
     icon: React.createElement(DollarCircleOutlined),
     label: `New Transaction`,
   },
@@ -20,6 +22,10 @@ const items = [
 const AppLayout = () => {
   const navigation = useNavigate();
   const route = useLocation();
+
+  const logoutHandler = () => {
+    navigation("/");
+  };
 
   return (
     <Layout className="h-100">
@@ -39,8 +45,22 @@ const AppLayout = () => {
       </Sider>
       <Layout>
         <Header className="bg-white border-b-[1px] border-[#e9e9e9] pr-4 md:pr-[120px] flex justify-end items-center">
-          <span className="mr-2 text-[12px] text-[#808080]">Test User</span>{" "}
-          <Avatar src="https://randomuser.me/api/portraits/men/44.jpg" />
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  label: "Logout",
+                  icon: <LogoutOutlined />,
+                  onClick: logoutHandler,
+                },
+              ],
+            }}
+          >
+            <div>
+              <span className="mr-2 text-[12px] text-[#808080]">Test User</span>{" "}
+              <Avatar src="https://randomuser.me/api/portraits/men/44.jpg" />
+            </div>
+          </Dropdown>
         </Header>
         <Content className="min-h-[80vh] max-h-[93vh] overflow-y-auto bg-[#ffffff]">
           <div className="h-full py-6 bg-[#fafafa]">

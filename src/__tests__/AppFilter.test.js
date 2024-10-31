@@ -35,7 +35,6 @@ describe("AppFilter Component", () => {
     await waitFor(() => {
       expect(setSearchValue).toHaveBeenCalledWith("test");
     });
-    expect(setSearchValue).toHaveBeenCalledWith("test");
   });
 
   test("calls clearFilters on button click", () => {

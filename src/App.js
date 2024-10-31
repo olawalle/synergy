@@ -8,6 +8,7 @@ import NewTransactionPage from "./pages/NewTransactionPage";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Empty } from "antd";
+import LoginPage from "./pages/LoginPage";
 
 const queryClient = new QueryClient();
 function App() {
@@ -16,7 +17,8 @@ function App() {
       <div className="h-screen">
         <Router>
           <Routes>
-            <Route path="/*" element={<AppLayout />}>
+            <Route path="" element={<LoginPage />} />
+            <Route path="/dashboard/*" element={<AppLayout />}>
               <Route path="" element={<DashboardHome />} />
               <Route path="new-transaction" element={<NewTransactionPage />} />
             </Route>

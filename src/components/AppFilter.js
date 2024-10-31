@@ -67,8 +67,9 @@ function AppFilter({
       <DatePicker.RangePicker
         value={dateRange}
         onChange={(dates) => setDateRange(dates)}
-        className="w-full md:w-[200px]"
+        className="w-full md:w-[250px]"
         allowClear={false}
+        format={"DD MMM, YYYY"}
       />
       <Button type="primary" onClick={clearFilters}>
         clear
